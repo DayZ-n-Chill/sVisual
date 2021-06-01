@@ -33,8 +33,9 @@ class OptionsMenuSVisual : SOptionsMenuTab{
 	protected ref SliderWidget				m_headLeanSlider;
 	protected ref TextWidget				m_headLeanValue;
 
-	void OptionsMenuSVisual( Widget parent, Widget details_root, OptionsMenu menu ){
+	override void onInit(){
 		m_sUserConfig = SUserConfig.visual();
+		super.onInit();
 	}
 	
 	override void initOptionsWidgets(){
