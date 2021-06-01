@@ -1,7 +1,7 @@
 modded class DayZPlayerCameraBase{
 	
-	protected DayZPlayerImplement m_iPlayer; //@todo just a quick thing, change this absolutely
-	protected ref CameraManager m_camManager;
+	protected DayZPlayerImplement m_iPlayer;
+	protected ref CameraManager m_camManager; //@todo test this
 	
 	protected static ref PPENightVision m_nightVisionPPE = new PPENightVision(); // used with night vision optic/goggles
 	
@@ -16,8 +16,6 @@ modded class DayZPlayerCameraBase{
 	void DayZPlayerCameraBase(DayZPlayer pPlayer, HumanInputController pInput){
 		m_iPlayer = DayZPlayerImplement.Cast(pPlayer);
 		m_ddofStartBoneIdx = pPlayer.GetBoneIndexByName("Head");
-		m_camManager = new CameraManager(this, PlayerBase.Cast(m_pPlayer));
-		
 		m_sRaycast = new SRaycast("0 0 0", "0 0 0", 0.05, ObjIntersectView, CollisionFlags.NEARESTCONTACT);
 
 		if(isDDOFEnabled()) {
@@ -30,12 +28,6 @@ modded class DayZPlayerCameraBase{
 	
 	void ~DayZPlayerCameraBase(){
 		
-	}
-	
-	
-	override void OnUpdate(float pDt, out DayZPlayerCameraResult pOutResult){
-		super.OnUpdate(pDt, pOutResult);
-		m_camManager.onUpdate(pDt, pOutResult);		
 	}
 	
 	protected bool canRequestDDOF(){
