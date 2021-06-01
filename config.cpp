@@ -1,4 +1,3 @@
-#define S_UDE
 #define S_VISUAL
 
 class CfgPatches {
@@ -7,65 +6,48 @@ class CfgPatches {
 		weapons[] = {};
 		requiredVersion = 0.1;
 		requiredAddons[] = {
-			"DZ_Scripts"
+			"sCore"
+		};
+	};
+};
+
+class CfgMods {
+	class sVisual {
+		dir = "MyMODS/sVisual";
+		picture = "";
+		action = "";
+		hideName = 1;
+		hidePicture = 1;
+		name = "sVisual";
+		credits = "simonvic";
+		author = "simonvic";
+		authorID = "0";
+		version = "0.1";
+		extra = 0;
+		type = "mod";
+		dependencies[] = {
+			"Game",
+			"World",
+			"Mission"
+		};
+		class defs {
+			class gameScriptModule {
+				value = "";
+				files[] = {"MyMODS/sVisual/scripts/3_Game"};
+			};
+			class worldScriptModule {
+				value = "";
+				files[] = {"MyMODS/sVisual/scripts/4_World"};
+			};
+			class missionScriptModule {
+				value = "";
+				files[] = {"MyMODS/sVisual/scripts/5_Mission"};
+			};
 		};
 	};
 };
 
 class Cfg_sUDE{
-	class BaseBuilding{
-		enabled = 0;
-	};
-	class Caves{
-		enabled = 0;
-	};
-	class Character{
-		enabled = 0;
-	};
-	class Driving{
-		enabled = 0;
-	};
-	class Inventory{
-		enabled = 0;
-	};
-	class Looting{
-		enabled = 0;
-	};
-	class Medical{
-		enabled = 0;
-	};
-	class Gunplay{
-		enabled = 0;
-	};
-	class SoftSkills{
-		enabled = 0;
-	};
-	class Survival{
-		enabled = 0;
-		class Cooking{
-			class Recipes{
-				minFluidity = 0;
-				maxFluidity = 9999;
-				class Liquids{
-					minFluidity = 500;
-					class Drinks{
-						maxFluidity = 9999;
-						class CoffeeRecipe{};
-					};
-					class Soups{
-						maxFluidity = 1000;
-						class MushroomSoupRecipe{};
-					};
-				};
-				class Solids{
-					minFluidity = 0;
-					maxFluidity = 500;
-					class CookedRiceRecipe{};
-					class RiceAndMushroomsRecipe{};
-				};
-			};
-		};
-	};
 	class Visual{
 		enabled = 1;
 		class Camera{
@@ -127,39 +109,3 @@ class Cfg_sUDE{
 	};
 };
 
-class CfgMods {
-	class sVisual {
-		dir = "MyMODS/sVisual";
-		picture = "";
-		action = "";
-		hideName = 1;
-		hidePicture = 1;
-		name = "sVisual";
-		credits = "simonvic";
-		author = "simonvic";
-		authorID = "0";
-		version = "0.1";
-		extra = 0;
-		type = "mod";
-		dependencies[] = {
-			"Game",
-			"World",
-			"Mission"
-		};
-		class defs {
-			class gameScriptModule {
-				value = "";
-				files[] = {"MyMODS/sVisual/scripts/3_Game"};
-			};
-			class worldScriptModule {
-				value = "";
-				files[] = {"MyMODS/sVisual/scripts/4_World"};
-			};
-			
-			class missionScriptModule {
-				value = "";
-				files[] = {"MyMODS/sVisual/scripts/5_Mission"};
-			};
-		};
-	};
-};
