@@ -1,34 +1,26 @@
-class CameraManager {
-	
-	protected float m_time;	
-	
-	protected float m_yawVel[1];
-	protected float m_pitchVel[1];
-	
-	protected PlayerBase m_player;
-	protected DayZPlayerCameraBase m_camera;
-	
+modded class CameraManager {
+		
 	protected SUserConfigVisual m_sUserConfigVisual;
 	
+	protected float m_yawVel[1];
+	protected float m_pitchVel[1];	
+	
 	void CameraManager(DayZPlayerCameraBase camera, PlayerBase player){
-		m_camera = camera;
-		m_player = player;
 		m_sUserConfigVisual = SUserConfig.getInstance().visual();
-		onInit();
 	}
 	
 	void ~CameraManager(){
 		onDestroy();
 	}
 	
-	void onInit(){
+	override void onInit(){
 	}
 
-	void onDestroy(){
+	override void onDestroy(){
 	}
 	
-	void onUpdate(float pDt, out DayZPlayerCameraResult pOutResult){
-		m_time += pDt;
+	override void onUpdate(float pDt, out DayZPlayerCameraResult pOutResult){
+		super.onUpdate(pDt, pOutResult);
 		
 		//Convert camera transformation matrix to yaw pitch roll angles
 		vector camAngles = Math3D.MatrixToAngles(pOutResult.m_CameraTM);
